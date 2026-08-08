@@ -4,7 +4,7 @@ plugins {
 
 group 'me.wega'
 version '1.0-SNAPSHOT'
-description 'A spigot plugin that continues reducing potion effect times while players are offline.'
+description 'A spigot plugin that continues reducing potion effect times while player or server is offline'
 
 repositories {
     maven { url 'https://maven.elmakers.com/repository' }
