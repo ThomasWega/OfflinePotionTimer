@@ -1,0 +1,40 @@
+plugins {
+    id 'java'
+}
+
+group 'me.wega'
+version '1.0-SNAPSHOT'
+description 'A spigot plugin that continues reducing potion effect times while players are offline.'
+
+repositories {
+    maven { url 'https://maven.elmakers.com/repository' }
+}
+
+dependencies {
+    compileOnly 'org.spigotmc:spigot:1.8.8-R0.1-SNAPSHOT'
+}
+
+processResources {
+    inputs.property 'version', project.version
+    inputs.property 'description', project.description
+
+    filesMatching('plugin.yml') {
+        expand(
+                version: project.version,
+                description: project.description
+        )
+    }
+}
+
+java.sourceCompatibility = 8
+java.targetCompatibility = 8
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+    options.compilerArgs.add('--release')
+    options.compilerArgs.add('8')
+}
+
+tasks.withType(ProcessResources).configureEach {
+    filteringCharset = 'UTF-8'
+}
